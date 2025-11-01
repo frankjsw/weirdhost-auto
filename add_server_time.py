@@ -9,9 +9,9 @@ def add_server_time(server_url="https://hub.weirdhost.xyz/server/0f4424f2"):
     优先使用 API_KEY 登录。
     """
 
-    api_key = os.environ.get('PTERODACTYL_API_KEY')
+    api_key = os.environ.get('API_KEY')
     if not api_key:
-        print("错误: 缺少 PTERODACTYL_API_KEY 环境变量。")
+        print("错误: 缺少 API_KEY 环境变量。")
         return False
 
     base_url = "https://hub.weirdhost.xyz"
