@@ -52,26 +52,26 @@ def add_server_time(server_url="https://hub.weirdhost.xyz/server/0f4424f2"):
         page.goto(server_url, wait_until="domcontentloaded", timeout=90000)
 
         # === Step 3: 查找并点击 “시간추가” 按钮 ===
-        add_button_selector = 'span.Button___StyledSpan-sc-1qu1gou-2:has-text("시간추가")'
+        print("等待页面元素加载...")
+        page.wait_for_timeout(5000)  # 等待React渲染
 
+        # 更宽松的选择器，匹配包含“시간”文字的按钮
+        add_button_selector = 'button:has(span:has-text("시간"))'
         print(f"正在查找按钮: {add_button_selector}")
+
         try:
             add_button = page.locator(add_button_selector)
-            add_button.wait_for(state='visible', timeout=300000)
+            add_button.wait_for(state='visible', timeout=60000)
             add_button.click()
             print("✅ 成功点击 '시간추가' 按钮。")
+            page.screenshot(path="after_click.png")
             time.sleep(5)
             print("🎉 任务完成。")
             browser.close()
             return True
         except PlaywrightTimeoutError:
-            print("❌ 错误: 在30秒内未找到 '시간추가' 按钮。")
-            page.screenshot(path="add_button_not_found.png")
-            browser.close()
-            return False
-        except Exception as e:
-            print(f"执行时出现错误: {e}")
-            page.screenshot(path="general_error.png")
+            print("❌ 错误: 未找到按钮，保存页面截图供调试。")
+            page.screenshot(path="button_not_found.png")
             browser.close()
             return False
 
