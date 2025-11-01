@@ -2,7 +2,7 @@ import os
 import requests
 import time
 
-def add_server_time_via_api(server_url="https://hub.weirdhost.xyz/api/add_time"):
+def add_server_time_via_api(server_url="https://hub.weirdhost.xyz/server/0f4424f2"):
     """
     使用 API 密钥通过 API 增加服务器时间。
     假设平台提供了 API 密钥认证，并支持通过 POST 请求增加服务器时间。
