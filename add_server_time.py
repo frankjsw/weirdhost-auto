@@ -57,7 +57,7 @@ def add_server_time(server_url="https://hub.weirdhost.xyz/server/0f4424f2"):
         print(f"正在查找按钮: {add_button_selector}")
         try:
             add_button = page.locator(add_button_selector)
-            add_button.wait_for(state='visible', timeout=30000)
+            add_button.wait_for(state='visible', timeout=300000)
             add_button.click()
             print("✅ 成功点击 '시간추가' 按钮。")
             time.sleep(5)
