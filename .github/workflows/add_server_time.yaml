@@ -39,3 +39,12 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}  # 从 GitHub Secrets 获取 API 密钥
         run: |
           python add_server_time.py  # 运行您的 Python 脚本
+
+      - name: Upload debug screenshots
+        if: always()   # 即使前面失败也上传
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots
+          path: |
+            *.png
+
