@@ -28,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests  # 安装 requests 库用于 API 请求
 
+      - name: Install dependencies
+        run: |
+          pip install playwright requests
+          playwright install chromium
+
       # 运行 Python 脚本
       - name: 运行增加服务器时间脚本
         env:
